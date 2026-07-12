@@ -1,0 +1,17 @@
+body{
+    background:#121212;
+}
+
+.card{
+    border:none;
+    border-radius:12px;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    transition:.3s;
+}
+
+.list-group-item:hover{
+    background:#343a40 !important;
+}

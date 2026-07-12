@@ -1,17 +1,28 @@
+# ============================================================
+# Imports
+# ============================================================
+
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 
 from backend.monitoring.system_info import get_system_info
 from backend.monitoring.resource_monitor import get_resource_usage
 
+# ============================================================
+# FastAPI Application
+# ============================================================
 app = FastAPI(
     title="Production Monitoring Dashboard",
     description="Enterprise Monitoring System",
     version="1.0.0"
 )
-
+# ============================================================
+# Templates & Static Files
+# ============================================================
 templates = Jinja2Templates(directory="backend/templates")
+app.mount("/static", StaticFiles(directory="backend/static"), name="static")
 
 
 @app.get("/")

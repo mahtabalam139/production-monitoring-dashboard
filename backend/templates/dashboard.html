@@ -1,20 +1,43 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Production Monitoring Dashboard</title>
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block title %}Dashboard{% endblock %}
 
-<h1>Production Monitoring Dashboard</h1>
+{% block content %}
 
-<h3>System Resources</h3>
+<h2 class="mb-4">
+    <i class="bi bi-speedometer2"></i>
+    Dashboard
+</h2>
 
-<ul>
-    <li>CPU : {{ data.cpu_percent }} %</li>
-    <li>Memory : {{ data.memory_percent }} %</li>
-    <li>Disk : {{ data.disk_percent }} %</li>
-</ul>
+<div class="row">
 
-</body>
-</html>
+    <div class="col-md-4 mb-4">
+        <div class="card bg-secondary text-white">
+            <div class="card-body">
+                <h5>CPU Usage</h5>
+                <h2>{{ data.cpu_percent }} %</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card bg-secondary text-white">
+            <div class="card-body">
+                <h5>Memory Usage</h5>
+                <h2>{{ data.memory_percent }} %</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <div class="card bg-secondary text-white">
+            <div class="card-body">
+                <h5>Disk Usage</h5>
+                <h2>{{ data.disk_percent }} %</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
