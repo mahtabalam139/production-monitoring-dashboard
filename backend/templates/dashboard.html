@@ -10,48 +10,103 @@
 </h2>
 <div class="row">
     <!-- CPU Card -->
-    <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card dashboard-card">
-            <div class="card-body">
-                <h6 class="card-title">
-                    <i class="bi bi-cpu"></i>
-                    CPU Usage
-                </h6>
-                <h2 class="card-value">
-                    {{ resource.cpu_percent }} %
-                </h2>
-            </div>
-        </div>
-    </div>
-    <!-- Memory Card -->
-    <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card dashboard-card">
-            <div class="card-body">
-                <h6 class="card-title">
-                    <i class="bi bi-memory"></i>
-                    Memory Usage
-                </h6>
+<div class="col-lg-4 col-md-6 mb-4">
 
-                <h2 class="card-value" id="memory_usage">
-                    {{ resource.memory_percent }} %
-                </h2>
+    <div class="card dashboard-card">
+
+        <div class="card-body">
+
+            <h6 class="card-title">
+                <i class="bi bi-cpu"></i>
+                CPU Usage
+            </h6>
+
+            <h2 class="card-value" id="cpu_usage">
+                {{ resource.cpu_percent }} %
+            </h2>
+
+            <div class="progress mt-3">
+
+                <div
+                    id="cpu_bar"
+                    class="progress-bar bg-success"
+                    role="progressbar"
+                    style="width: {{ resource.cpu_percent }}%;">
+
+                </div>
+
             </div>
+
         </div>
+
     </div>
-    <!-- Disk Card -->
-    <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card dashboard-card">
-            <div class="card-body">
-                <h6 class="card-title">
-                    <i class="bi bi-device-hdd"></i>
-                    Disk Usage
-                </h6>
-                <h2 class="card-value" id="disk_usage">
-                    {{ resource.disk_percent }} %
-                </h2>
+
+</div>
+<!-- Memory Card -->
+<div class="col-lg-4 col-md-6 mb-4">
+
+    <div class="card dashboard-card">
+
+        <div class="card-body">
+
+            <h6 class="card-title">
+                <i class="bi bi-memory"></i>
+                Memory Usage
+            </h6>
+
+            <h2 class="card-value" id="memory_usage">
+                {{ resource.memory_percent }} %
+            </h2>
+
+            <div class="progress mt-3">
+
+                <div
+                    id="memory_bar"
+                    class="progress-bar bg-info"
+                    role="progressbar"
+                    style="width: {{ resource.memory_percent }}%;">
+
+                </div>
+
             </div>
+
         </div>
+
     </div>
+
+</div>
+<!-- Disk Card -->
+<div class="col-lg-4 col-md-6 mb-4">
+
+    <div class="card dashboard-card">
+
+        <div class="card-body">
+
+            <h6 class="card-title">
+                <i class="bi bi-device-hdd"></i>
+                Disk Usage
+            </h6>
+
+            <h2 class="card-value" id="disk_usage">
+                {{ resource.disk_percent }} %
+            </h2>
+
+            <div class="progress mt-3">
+
+                <div
+                    id="disk_bar"
+                    class="progress-bar bg-warning"
+                    role="progressbar"
+                    style="width: {{ resource.disk_percent }}%;">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 <hr class="text-secondary my-4">
 <h3 class="mb-3">

@@ -12,12 +12,18 @@ async function updateResources() {
 
         document.getElementById("cpu_usage").innerHTML =
             data.cpu_percent + " %";
+        document.getElementById("cpu_bar").style.width =
+        data.cpu_percent + "%";
 
         document.getElementById("memory_usage").innerHTML =
             data.memory_percent + " %";
+        document.getElementById("memory_bar").style.width =
+            data.memory_percent + "%";
 
         document.getElementById("disk_usage").innerHTML =
             data.disk_percent + " %";
+        document.getElementById("disk_bar").style.width =
+            data.disk_percent + "%";
 
     }
 
