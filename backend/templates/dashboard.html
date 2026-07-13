@@ -8,36 +8,94 @@
     <i class="bi bi-speedometer2"></i>
     Dashboard
 </h2>
-
 <div class="row">
-
-    <div class="col-md-4 mb-4">
-        <div class="card bg-secondary text-white">
+    <!-- CPU Card -->
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card dashboard-card">
             <div class="card-body">
-                <h5>CPU Usage</h5>
-                <h2>{{ data.cpu_percent }} %</h2>
+                <h6 class="card-title">
+                    <i class="bi bi-cpu"></i>
+                    CPU Usage
+                </h6>
+                <h2 class="card-value">
+                    {{ resource.cpu_percent }} %
+                </h2>
             </div>
         </div>
     </div>
-
-    <div class="col-md-4 mb-4">
-        <div class="card bg-secondary text-white">
+    <!-- Memory Card -->
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card dashboard-card">
             <div class="card-body">
-                <h5>Memory Usage</h5>
-                <h2>{{ data.memory_percent }} %</h2>
+                <h6 class="card-title">
+                    <i class="bi bi-memory"></i>
+                    Memory Usage
+                </h6>
+
+                <h2 class="card-value">
+                    {{ resource.memory_percent }} %
+                </h2>
             </div>
         </div>
     </div>
-
-    <div class="col-md-4 mb-4">
-        <div class="card bg-secondary text-white">
+    <!-- Disk Card -->
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card dashboard-card">
             <div class="card-body">
-                <h5>Disk Usage</h5>
-                <h2>{{ data.disk_percent }} %</h2>
+                <h6 class="card-title">
+                    <i class="bi bi-device-hdd"></i>
+                    Disk Usage
+                </h6>
+                <h2 class="card-value">
+                    {{ resource.disk_percent }} %
+                </h2>
             </div>
         </div>
     </div>
-
 </div>
-
+<hr class="text-secondary my-4">
+<h3 class="mb-3">
+    <i class="bi bi-pc-display"></i>
+    System Information
+</h3>
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card dashboard-card">
+            <div class="card-body">
+                <table class="table table-dark table-hover align-middle mb-0">
+                    <tbody>
+                        <tr>
+                            <th>Hostname</th>
+                            <td>{{ system.hostname }}</td>
+                        </tr>
+                        <tr>
+                            <th>Operating System</th>
+                            <td>{{ system.operating_system }}</td>
+                        </tr>
+                        <tr>
+                            <th>OS Version</th>
+                            <td>{{ system.os_version }}</td>
+                        </tr>
+                        <tr>
+                            <th>Python Version</th>
+                            <td>{{ system.python_version }}</td>
+                        </tr>
+                        <tr>
+                            <th>Processor</th>
+                            <td>{{ system.processor }}</td>
+                        </tr>
+                        <tr>
+                            <th>Architecture</th>
+                            <td>{{ system.architecture }}</td>
+                        </tr>
+                        <tr>
+                            <th>CPU Cores</th>
+                            <td>{{ system.cpu_count }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

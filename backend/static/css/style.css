@@ -1,17 +1,71 @@
+/* ==========================================================
+   Global Theme
+========================================================== */
 body{
-    background:#121212;
+    background-color:#181C24;
+    color:#F8F9FA;
+    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
 }
-
-.card{
+/* ==========================================================
+   Navbar
+========================================================== */
+.navbar{
+    height:65px;
+    background:#11151C !important;
+    border-bottom:1px solid #2B313C;
+}
+/* ==========================================================
+   Sidebar
+========================================================== */
+.sidebar{
+    background:#11151C;
+    min-height:100vh;
+    border-right:1px solid #2B313C;
+}
+.sidebar .list-group-item{
+    background:transparent;
+    color:#CED4DA;
     border:none;
-    border-radius:12px;
+    border-radius:10px;
+    margin-bottom:8px;
+    transition:0.3s;
 }
-
-.card:hover{
-    transform:translateY(-3px);
-    transition:.3s;
+.sidebar .list-group-item:hover{
+    background:#2D6CDF;
+    color:white;
 }
-
-.list-group-item:hover{
-    background:#343a40 !important;
+/* ==========================================================
+   Main Area
+========================================================== */
+.main-content{
+    padding:30px;
+}
+/* ==========================================================
+   Dashboard Cards
+========================================================= */
+.dashboard-card{
+    background:#232A34 !important;
+    color:white;
+    border:none;
+    border-radius:15px;
+    box-shadow:0px 5px 20px rgba(0,0,0,.25);
+    transition:all .3s ease;
+}
+.dashboard-card:hover{
+    transform:translateY(-5px);
+}
+.card-title{
+    color:#ADB5BD !important;
+}
+.card-value{
+    font-size:38px;
+    font-weight:bold;
+    color:white;
+}
+/* ==========================================================
+   Footer
+========================================================== */
+.footer{
+    color:#6C757D;
+    font-size:14px;
 }

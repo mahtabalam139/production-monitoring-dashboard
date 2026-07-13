@@ -46,10 +46,16 @@ def resources():
 
 @app.get("/dashboard", response_class=HTMLResponse)
 def dashboard(request: Request):
-    data = get_resource_usage()
+    resource_data = get_resource_usage()
+
+    system_data = get_system_info()
 
     return templates.TemplateResponse(
         request=request,
         name="dashboard.html",
-        context={"request": request, "data": data}
+        context={
+    "request": request,
+    "resource": resource_data,
+    "system": system_data
+}
     )
