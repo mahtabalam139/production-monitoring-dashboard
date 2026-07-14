@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}System{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    <i class="bi bi-pc-display"></i>
+    System Monitoring
+</h2>
+
+<div class="row">
+
+    <div class="col-lg-6 mb-4">
+
+        <div class="card dashboard-card">
+
+            <div class="card-body">
+
+                <h5>CPU</h5>
+
+                <h3 id="cpu_usage">
+                    {{ resource.cpu_percent }} %
+                </h3>
+
+                <div class="progress">
+
+                    <div
+                        id="cpu_bar"
+                        class="progress-bar bg-success"
+                        style="width: {{ resource.cpu_percent }}%;">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-6 mb-4">
+
+        <div class="card dashboard-card">
+
+            <div class="card-body">
+
+                <h5>Memory</h5>
+
+                <h3 id="memory_usage">
+                    {{ resource.memory_percent }} %
+                </h3>
+
+                <div class="progress">
+
+                    <div
+                        id="memory_bar"
+                        class="progress-bar bg-info"
+                        style="width: {{ resource.memory_percent }}%;">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card dashboard-card">
+
+    <div class="card-body">
+
+        <table class="table table-dark table-hover">
+
+            <tbody>
+
+                <tr>
+                    <th>Hostname</th>
+                    <td>{{ system.hostname }}</td>
+                </tr>
+
+                <tr>
+                    <th>Operating System</th>
+                    <td>{{ system.operating_system }}</td>
+                </tr>
+
+                <tr>
+                    <th>OS Version</th>
+                    <td>{{ system.os_version }}</td>
+                </tr>
+
+                <tr>
+                    <th>Processor</th>
+                    <td>{{ system.processor }}</td>
+                </tr>
+
+                <tr>
+                    <th>Architecture</th>
+                    <td>{{ system.machine }}</td>
+                </tr>
+
+                <tr>
+                    <th>Python Version</th>
+                    <td>{{ system.python_version }}</td>
+                </tr>
+
+                <tr>
+                    <th>CPU Cores</th>
+                    <td>{{ system.cpu_count }}</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
