@@ -1,0 +1,9 @@
+/* Dashboard Specific CSS */
+
+.dashboard-card{
+    transition:all .3s ease;
+}
+
+.dashboard-card:hover{
+    transform:translateY(-5px);
+}
