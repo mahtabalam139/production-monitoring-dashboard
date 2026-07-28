@@ -8,3 +8,13 @@ docker run -d --name monitoring-dashboard -p 8000:8000 -v //var/run/docker.sock:
 4. Verify
 Open:
 http://localhost:8000/dashboard
+
+
+If Docker isn't installed on the office PC
+
+You can still run the project locally:
+
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn backend.main:app --reload
