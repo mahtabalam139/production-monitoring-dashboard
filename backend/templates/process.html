@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Processes{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">
+
+<i class="bi bi-cpu"></i>
+
+Running Processes
+
+</h2>
+
+<div class="card dashboard-card">
+
+<div class="card-body">
+<div class="row mb-3">
+
+    <div class="col-md-6">
+
+        <input
+            type="text"
+            id="searchBox"
+            class="form-control"
+            placeholder="Search Process">
+
+    </div>
+
+    <div class="col-md-6 text-end">
+
+        <strong>
+
+            <div class="col-md-6 text-end">
+
+    <div>
+
+        <strong>
+
+            Total Processes :
+
+            <span id="processCount">
+
+                {{ processes|length }}
+
+            </span>
+
+        </strong>
+
+    </div>
+
+    <small class="text-secondary">
+
+        Last Updated :
+
+        <span id="lastUpdated">
+
+            --
+
+        </span>
+
+    </small>
+
+</div>
+
+        </strong>
+
+    </div>
+
+</div>
+
+<table class="table table-dark table-hover">
+
+<thead>
+
+<tr>
+
+<th>PID</th>
+
+<th>Process</th>
+
+<th id="sortCpu" style="cursor:pointer;">
+
+CPU %
+
+<i class="bi bi-arrow-down-up"></i>
+
+</th>
+
+<th id="sortMemory" style="cursor:pointer;">
+
+Memory (MB)
+
+<i class="bi bi-arrow-down-up"></i>
+
+</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody id="processTable">
+
+{% for process in processes %}
+
+<tr>
+
+<td>{{ process.pid }}</td>
+
+<td>{{ process.name }}</td>
+
+<td>{{ process.cpu }}</td>
+
+<td>{{ process.memory }}</td>
+
+<td>
+
+<span class="badge rounded-pill bg-success">
+
+{{ process.status }}
+
+</span>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

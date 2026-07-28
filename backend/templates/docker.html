@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}Docker Monitoring{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">
+    <i class="bi bi-box"></i>
+    Docker Monitoring
+</h2>
+
+<!-- Summary Cards -->
+
+<div class="row">
+
+    <div class="col-lg-4 mb-4">
+        <div class="card dashboard-card">
+            <div class="card-body">
+                <h6>Docker Engine</h6>
+                <h2>{{ docker.engine }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 mb-4">
+        <div class="card dashboard-card">
+            <div class="card-body">
+                <h6>Running Containers</h6>
+                <h2>{{ docker.running }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 mb-4">
+        <div class="card dashboard-card">
+            <div class="card-body">
+                <h6>Stopped Containers</h6>
+                <h2>{{ docker.stopped }}</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-lg-4 mb-4">
+        <div class="card dashboard-card">
+            <div class="card-body">
+                <h6>Images</h6>
+                <h2>{{ docker.images }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 mb-4">
+        <div class="card dashboard-card">
+            <div class="card-body">
+                <h6>Volumes</h6>
+                <h2>{{ docker.volumes }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 mb-4">
+        <div class="card dashboard-card">
+            <div class="card-body">
+                <h6>Networks</h6>
+                <h2>{{ docker.networks }}</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<hr class="text-secondary">
+
+<h3 class="mb-3">
+
+    <i class="bi bi-list-ul"></i>
+
+    Container List
+
+</h3>
+
+<div class="table-responsive">
+
+    <table class="table table-dark table-hover align-middle">
+
+        <thead>
+
+            <tr>
+
+                <th>Name</th>
+
+                <th>Image</th>
+
+                <th>Status</th>
+
+                <th>Ports</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% if docker.containers %}
+
+            {% for container in docker.containers %}
+
+            <tr>
+
+                <td>{{ container.name }}</td>
+
+                <td>{{ container.image }}</td>
+
+                <td>
+
+                    {% if container.status == "running" %}
+
+                        <span class="badge bg-success">
+                            Running
+                        </span>
+
+                    {% else %}
+
+                        <span class="badge bg-secondary">
+                            {{ container.status }}
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+                <td>{{ container.ports }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+        {% else %}
+
+            <tr>
+
+                <td colspan="4" class="text-center text-secondary">
+
+                    No Docker Containers Found
+
+                </td>
+
+            </tr>
+
+        {% endif %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

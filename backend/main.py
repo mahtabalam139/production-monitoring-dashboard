@@ -10,6 +10,8 @@ from backend.api.system import router as system_router
 from backend.api.resources import router as resources_router
 from backend.api.dashboard import router as dashboard_router
 from backend.api.system_page import router as system_page_router
+from backend.api.process import router as process_router
+from backend.api.docker import router as docker_router
 
 # ============================================================
 # FastAPI Application
@@ -36,3 +38,5 @@ app.include_router(system_router)
 app.include_router(resources_router)
 app.include_router(dashboard_router)
 app.include_router(system_page_router)
+app.include_router(process_router)
+app.include_router(docker_router)

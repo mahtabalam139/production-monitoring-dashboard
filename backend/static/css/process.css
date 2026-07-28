@@ -1,0 +1,48 @@
+.table td{
+
+    vertical-align:middle;
+
+}
+
+.table{
+
+    margin-bottom:0;
+
+}
+#searchBox{
+
+    margin-bottom:15px;
+
+}
+
+.badge{
+
+    font-size:.85rem;
+
+}
+
+#lastUpdated{
+
+    color:#0dcaf0;
+
+    font-weight:bold;
+
+}
+
+th{
+
+    user-select:none;
+
+}
+
+th:hover{
+
+    color:#0dcaf0;
+
+}
+
+.table tbody tr:hover{
+
+    background:#2d3748;
+
+}
