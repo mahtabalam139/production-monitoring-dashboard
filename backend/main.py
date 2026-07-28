@@ -12,6 +12,10 @@ from backend.api.dashboard import router as dashboard_router
 from backend.api.system_page import router as system_page_router
 from backend.api.process import router as process_router
 from backend.api.docker import router as docker_router
+from backend.api.database import router as database_router
+from backend.api.logs import router as logs_router
+from backend.api.alerts import router as alerts_router
+from backend.api.servers import router as servers_router
 
 # ============================================================
 # FastAPI Application
@@ -40,3 +44,7 @@ app.include_router(dashboard_router)
 app.include_router(system_page_router)
 app.include_router(process_router)
 app.include_router(docker_router)
+app.include_router(database_router)
+app.include_router(logs_router)
+app.include_router(alerts_router)
+app.include_router(servers_router)

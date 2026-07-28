@@ -1,0 +1,11 @@
+.dashboard-card{
+
+    transition:.3s;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-4px);
+
+}
