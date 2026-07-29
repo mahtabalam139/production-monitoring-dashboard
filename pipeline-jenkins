@@ -11,21 +11,19 @@ pipeline{
         stage("Build the docker images"){
             steps{
                 echo "building docker images"
-                sh "docker build -t monitoring-dashboard:latest ."
-            }
-        }
-        stage("stop the docker images"){
-            steps{
-                echo "stopping the docker images"
-                sh "docker stop monitoring-dashboard || true docker rm monitoring-dashboard || true "
-                
-                echo "docker images stop and removed "
+                sh """
+                docker build -t monitoring-dashboard:${BUILD_NUMBER} .
+                docker tag monitoring-dashboard:${BUILD_NUMBER} monitoring-dashboard:latest
+                """
             }
         }
         stage("stopping the docker process"){
             steps{
                 echo "stop the docker process before running "
-                sh "docker stop monitoring-dashboard || true docker rm monitoring-dashboard || true"
+                sh """
+                docker stop monitoring-dashboard || true
+                docker rm monitoring-dashboard || true
+                """
             }
         }
         stage("Deploy the container"){
@@ -34,11 +32,11 @@ pipeline{
                 sh "docker run -d --name monitoring-dashboard -p 8000:8000 monitoring-dashboard:latest "
             }
         }
-        stage("Veryfying the images "){
+        stage("Veryfying the images an health check "){
             steps{
                 echo "verifying the images "
                 sleep time: 15, unit: 'SECONDS'
-                sh "curl http://localhost:8000"
+                sh 'curl http://localhost:8000'
                 echo "Finnalllyyy Done "
             }
         }
