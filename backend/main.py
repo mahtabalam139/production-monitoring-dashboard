@@ -36,7 +36,7 @@ app.mount("/static", StaticFiles(directory="backend/static"), name="static")
 # ============================================================
 # Register Routers
 # ============================================================
-print("Dumyline for testing ")
+
 app.include_router(home_router)
 app.include_router(system_router)
 app.include_router(resources_router)
