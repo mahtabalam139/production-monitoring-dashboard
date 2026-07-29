@@ -37,7 +37,7 @@ pipeline{
                 echo "verifying the images "
                 sleep time: 15, unit: 'SECONDS'
                 sh 'curl http://localhost:8000'
-                echo "Finnalllyyy Done "
+                echo "Finnalllyyy Done updated hhhurayyyyy"
             }
         }
         stage("push to docker hub"){
