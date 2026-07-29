@@ -45,12 +45,12 @@ pipeline{
                 withCredentials([
                     usernamePassword(
                         credentailsId: 'dockerhub-creds',
-                        usernameVariable: 'mahtabalam716',
-                        passwordVariable: 'Edelcap@123')]){
+                        usernameVariable: 'DOCKER_USER',
+                        passwordVariable: 'DOCKER_PASS')]){
                             sh '''
                             echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                            docker tag monitoring-dashboard:latest 
-                            $DOCKER_USER/monitoring-dashboard:latest .
+                            docker tag monitoring-dashboard:latest \
+                            $DOCKER_USER/monitoring-dashboard:latest
                             docker push 
                             $DOCKER_USER/monitoring-dashboard:latest
                             '''
