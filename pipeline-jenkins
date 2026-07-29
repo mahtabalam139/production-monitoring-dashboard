@@ -1,1 +1,47 @@
-
+pipeline{
+    agent {label "slave"}
+    stages{
+        stage("Build"){
+            steps{
+                echo "cloning the ode from github"
+                git branch: 'main',
+                url: 'https://github.com/mahtabalam139/production-monitoring-dashboard.git'
+            }
+        }
+        stage("Build the docker images"){
+            steps{
+                echo "building docker images"
+                sh "docker build -t monitoring-dashboard:latest ."
+            }
+        }
+        stage("stop the docker images"){
+            steps{
+                echo "stopping the docker images"
+                sh "docker stop monitoring-dashboard || true docker rm monitoring-dashboard || true "
+                
+                echo "docker images stop and removed "
+            }
+        }
+        stage("stopping the docker process"){
+            steps{
+                echo "stop the docker process before running "
+                sh "docker stop monitoring-dashboard || true docker rm monitoring-dashboard || true"
+            }
+        }
+        stage("Deploy the container"){
+            steps{
+                echo "Deploying container from docker images "
+                sh "docker run -d --name monitoring-dashboard -p 8000:8000 monitoring-dashboard:latest "
+            }
+        }
+        stage("Veryfying the images "){
+            steps{
+                echo "verifying the images "
+                sleep time: 15, unit: 'SECONDS'
+                sh "curl http://localhost:8000"
+                echo "Finnalllyyy Done "
+            }
+        }
+        
+    }
+}
