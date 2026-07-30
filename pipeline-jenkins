@@ -27,11 +27,17 @@ pipeline{
             }
         }
         stage("Deploy the container"){
-            steps{
-                echo "Deploying container from docker images "
-                sh "docker run -d --name monitoring-dashboard -p 8000:8000 monitoring-dashboard:latest "
-            }
+        steps{
+            echo "Deploying container from docker images "
+            sh '''
+            docker run -d \
+              --name monitoring-dashboard \
+              -p 8000:8000 \
+              -v /var/run/docker.sock:/var/run/docker.sock \
+              monitoring-dashboard:latest
+            '''
         }
+    }
         stage("Veryfying the images an health check "){
             steps{
                 echo "verifying the images "
